@@ -15,6 +15,10 @@
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
     "typescript": "^4.4.2",
+    "ethers": "^5.0.31",
+    "bitski": "^0.14.2",
+    "@imtbl/imx-sdk": "^1.20.2",
+    "@ethersproject/providers": "^5.6.8",
     "web-vitals": "^2.1.0"
   },
   "scripts": {

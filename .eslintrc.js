@@ -29,7 +29,6 @@ module.exports = {
     "@typescript-eslint/no-use-before-define": "error",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": ["error", { extensions: [".tsx"] }],
-    "arrow-body-style": ["error", "always"],
     "react/function-component-definition": [
       2,
       {
