@@ -21,15 +21,7 @@ const Setup = () => {
     | "complete">("connectWallet");
   const bitski = buildBitskiClient();
 
-  // bitski
-  //     .signIn()
-  //     .then(() => {
-  //         console.log('fully logged in and ready to use the wallet');
-  //     })
-  //     .catch((error) => {
-  //         console.log('handle errors from login flow');
-  //     });
-
+  // for some reason it shows sdkVersion: '0.14.1' instead of '0.14.2'
   console.log({ bitski });
 
   // eslint-disable-next-line no-unused-vars
@@ -40,19 +32,6 @@ const Setup = () => {
 
   const returnUserDetails = (publicAddress: EthAddress, message: any) => {
     console.log({ publicAddress, message });
-    // parent.postMessage(
-    //   {
-    //     type: LINK_MESSAGE_TYPE,
-    //     message,
-    //     data: {
-    //       address: publicAddress,
-    //       starkPublicKey: imxClient?.starkPublicKey,
-    //       providerPreference: "bitski",
-    //       ethNetwork: config.ethNetwork
-    //     }
-    //   },
-    //   "*"
-    // );
   };
 
   const handleSubmit = async (event: FormEvent) => {
@@ -62,16 +41,6 @@ const Setup = () => {
       setStep("waitingBitskiConfirmation");
       const signedUser = await bitski.signIn();
       console.log({ signedUser });
-      // .then((user) => {
-      //     console.log(user);
-      // })
-      // .catch((e) => {
-      //     console.log('error: ', e);
-      // });
-      // await bitski.auth.loginWithBitskiLink({
-      //     email,
-      //     showUI: false,
-      // });
 
       setStep("waitingImxConfirmation");
       const bitskiProvider: BitskiEngine = bitski.getProvider({
@@ -82,42 +51,15 @@ const Setup = () => {
             "https://eth-ropsten.alchemyapi.io/v2/ClYYSO4GujQgO379eSr_-oy6ngELUA0v"
         }
       });
-      // const bitskiProvider: BitskiEngine = bitski.getProvider();
-      // const imxClient = await buildImxClient(bitskiProvider as any, config.client);
-      //
-      // console.log({ imxClient });
-      // //
-      // // const user = await bitski.getUser();
-      // //
-      // // console.log({ user });
-      // //
-      // const publicAddress = signedUser?.accounts?.[0]?.toLowerCase() as EthAddress;
-      //
-      // setAddress(publicAddress);
-      // console.log({ publicAddress });
-      // //
-      // const isRegistered = await imxClient.isRegistered({ user: publicAddress });
-      // setClient(imxClient);
-      // console.log({ isRegistered });
-      // //
-      // if (isRegistered) {
-      //     returnUserDetails(publicAddress, imxClient, messageTypes.result);
-      //     return;
-      // }
 
       const provider = new Web3Provider(bitskiProvider as any);
       const signer = await provider.getSigner();
       await signer.signMessage("TEST1");
-      // await sleep(1000);
+      // we can sign both messages only if we use 1 sec between
+      // if this line commented "TEST1" message will be signed, but "TEST2" - not
+      await sleep(1000);
       await signer.signMessage("TEST2");
-
-      // bitskiProvider.get
-
-      // await sleep(1000);
-
-      // setStep('setupImx');
-      //
-      // await registerUser(publicAddress, imxClient);
+      setStep("complete");
     } catch (err) {
       console.error(err);
     }
@@ -133,17 +75,13 @@ const Setup = () => {
     publicAddress: EthAddress,
     imxClient: ImmutableXClient
   ) => {
-    console.log("here");
     const result = await imxClient?.registerImx({
       etherKey: publicAddress,
       starkPublicKey: imxClient.starkPublicKey
     });
 
     console.log({ result });
-    console.log("here2");
-
     returnUserDetails(publicAddress, messageTypes.success);
-
     setStep("complete");
   };
 
