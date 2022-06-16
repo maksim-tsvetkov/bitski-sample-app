@@ -1,19 +1,12 @@
 import { Web3Provider } from "@ethersproject/providers";
-import { EthAddress, ImmutableXClient, messageTypes } from "@imtbl/imx-sdk";
-// import { Bitski } from "bitski";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BitskiEngine } from "bitski-provider";
 import React, { FormEvent, useState } from "react";
 import buildBitskiClient from "./client";
-// import buildImxClient from "../imx/client";
 
 const Setup = () => {
   // eslint-disable-next-line no-unused-vars
   const [email, setEmail] = useState("");
-  // eslint-disable-next-line no-unused-vars
-  const [address, setAddress] = useState<any>();
-  // eslint-disable-next-line no-unused-vars
-  const [client, setClient] = useState<ImmutableXClient>();
   const [step, setStep] = useState<| "connectWallet"
     | "waitingBitskiConfirmation"
     | "waitingImxConfirmation"
@@ -21,7 +14,7 @@ const Setup = () => {
     | "complete">("connectWallet");
   const bitski = buildBitskiClient();
 
-  // for some reason it shows sdkVersion: '0.14.1' instead of '0.14.2'
+  // IMPORTANT: for some reason it shows sdkVersion: '0.14.1' instead of '0.14.2'
   console.log({ bitski });
 
   // eslint-disable-next-line no-unused-vars
@@ -29,10 +22,6 @@ const Setup = () => {
       // eslint-disable-next-line no-promise-executor-return
        setTimeout(resolve, milliseconds)
     );
-
-  const returnUserDetails = (publicAddress: EthAddress, message: any) => {
-    console.log({ publicAddress, message });
-  };
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -55,34 +44,15 @@ const Setup = () => {
       const provider = new Web3Provider(bitskiProvider as any);
       const signer = await provider.getSigner();
       await signer.signMessage("TEST1");
-      // we can sign both messages only if we use 1 sec between
-      // if this line commented "TEST1" message will be signed, but "TEST2" - not
+      // IMPORTANT: we sign two messages in a row
+      // if we use 1 sec timeout and this line is not both messages will be signed
+      // otherwise "TEST1" message will be signed, but the second "TEST2" - not
       await sleep(1000);
       await signer.signMessage("TEST2");
       setStep("complete");
     } catch (err) {
       console.error(err);
     }
-  };
-
-  // eslint-disable-next-line no-unused-vars
-  const register = async () =>
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
-     registerUser(address, client!)
-  ;
-
-  const registerUser = async (
-    publicAddress: EthAddress,
-    imxClient: ImmutableXClient
-  ) => {
-    const result = await imxClient?.registerImx({
-      etherKey: publicAddress,
-      starkPublicKey: imxClient.starkPublicKey
-    });
-
-    console.log({ result });
-    returnUserDetails(publicAddress, messageTypes.success);
-    setStep("complete");
   };
 
   return (
