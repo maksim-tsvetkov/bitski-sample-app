@@ -47,7 +47,7 @@ const Setup = () => {
       // IMPORTANT: we sign two messages in a row
       // if we use 1 sec timeout and this line is not both messages will be signed
       // otherwise "TEST1" message will be signed, but the second "TEST2" - not
-      await sleep(1000);
+      // await sleep(1000);
       await signer.signMessage("TEST2");
       setStep("complete");
     } catch (err) {

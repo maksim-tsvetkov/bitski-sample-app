@@ -1071,12 +1071,12 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bitski/provider-engine@^0.7.0-beta.2":
-  version "0.7.0-beta.2"
-  resolved "https://registry.yarnpkg.com/@bitski/provider-engine/-/provider-engine-0.7.0-beta.2.tgz#0841894234288061b7c57edd0cdc5ac9c1a2f837"
-  integrity sha512-u9vWpLTKf6Eg8w+cnA0ilaTcDGWulkkqQMhfw9Lse2yU9m9sFhu+j/A42mFG7miSLv/mLP+LYT2Kx66u4rQ/sw==
+"@bitski/provider-engine@^0.7.0-beta.5":
+  version "0.7.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@bitski/provider-engine/-/provider-engine-0.7.0-beta.5.tgz#14890725bffddafebe6b328187de507bc18ceb49"
+  integrity sha512-KqVHluYMtW+wEL/YD9WHPiSBbyq0MOKDQWhHewHVZaNvFySpIXKG/GOA+QQvWrUAEBJq5xN1sGpRKuclR7dlYw==
   dependencies:
-    async "3.2.0"
+    async "^3.2.4"
     bn.js "^4.11.8"
     clone "^2.0.0"
     cross-fetch "^3.0.6"
@@ -3073,12 +3073,7 @@ async-mutex@^0.2.6:
   dependencies:
     tslib "^2.0.0"
 
-async@3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/async/-/async-3.2.0.tgz#b3a2685c5ebb641d3de02d161002c60fc9f85720"
-  integrity sha512-TR2mEZFVOj2pLStYxLht7TyfuRzaydfpxr3k9RpHIzMgw7A64dzsdqCxH1WJyQdoe8T10nDXd9wnEigmiuHIZw==
-
-async@^3.2.2, async@^3.2.3:
+async@^3.2.3, async@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/async/-/async-3.2.4.tgz#2d22e00f8cddeb5fde5dd33522b56d1cf569a81c"
   integrity sha512-iAB+JbDEGXhyIUavoDl9WP/Jj106Kz9DEn1DPgYw5ruDn0e3Wgi3sKFm55sASdGBNOQB8F59d9qQ7deqrHA8wQ==
@@ -3320,23 +3315,23 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
-bitski-provider@^0.14.1:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/bitski-provider/-/bitski-provider-0.14.1.tgz#cf92a9e57dca798415d3be5af6ac53ef062d7a37"
-  integrity sha512-rHcGDDU8N34k0ljF11jm/JzRAhTbfsLzhbowGZWDYKAh0Nvy62mdxpk5jqk6bSPxl7I1s/z+PhDxPdGwdeDTdw==
+bitski-provider@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/bitski-provider/-/bitski-provider-0.16.0.tgz#bf15ed0edd9401d5fccc0aa5c2210ce1706e463e"
+  integrity sha512-TEMhmMUK3GLAiQ+x9lMc3M+CPM9yHUj3gydarbrnRyGMSypVIIbIWaBYQ2wQVTD4sppNC06gQi1xPZV58JqpIQ==
   dependencies:
-    "@bitski/provider-engine" "^0.7.0-beta.2"
-    async "^3.2.2"
+    "@bitski/provider-engine" "^0.7.0-beta.5"
     bn.js "^4.11.8"
     json-rpc-error "^2.0.0"
 
-bitski@^0.14.2:
-  version "0.14.2"
-  resolved "https://registry.yarnpkg.com/bitski/-/bitski-0.14.2.tgz#6f8db72eb553abaf0db6fb7dc4c9050b6a393853"
-  integrity sha512-yQNc0jFZUJ0f6xJn7o4p3htQN67eBxTkxcK25qzIw41FmQ/GrOL6LVHyQmAEgh0OMVP1QnRS4+ene+m0u5kjBQ==
+bitski@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/bitski/-/bitski-0.16.0.tgz#d4ee126c05710804fb9d5beeae3eea85cfd9c2ca"
+  integrity sha512-Jd9AoN/hZSXyPbk+OzHU+V9jdWWzSz+Mp98xTdTGUAFkC4kQnV0x1rCXuj8bfy1bPkJ8Tqu2eSZ7RR23Yk61/w==
   dependencies:
+    "@bitski/provider-engine" "^0.7.0-beta.5"
     "@openid/appauth" "^1.2.6"
-    bitski-provider "^0.14.1"
+    bitski-provider "^0.16.0"
     uuid "^8.0.0"
 
 blakejs@^1.1.0:
